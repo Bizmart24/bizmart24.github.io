@@ -104,6 +104,19 @@
   .grid3 p, .grid3 ul { margin:0; color:var(--ink2); font-size:.94rem; }
   .grid3 ul { padding-left:18px; }
   .tag { display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--teal-ink); margin-bottom:6px; }
+  .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; }
+  .plans .card { display:flex; flex-direction:column; }
+  .plans h3 { font-size:1.1rem; margin:0; }
+  .plans .price { font-size:1.7rem; font-weight:800; letter-spacing:-.02em; margin:6px 0 2px; }
+  .plans .price small { font-size:.85rem; font-weight:600; color:var(--ink2); }
+  .plans .lim { font-size:.86rem; color:var(--ink2); margin-bottom:8px; }
+  .plans ul { margin:0; padding-left:18px; color:var(--ink2); font-size:.9rem; }
+  .cmp { overflow-x:auto; margin-top:18px; }
+  .cmp table { min-width:620px; }
+  .cmp th, .cmp td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:center; }
+  .cmp th:first-child, .cmp td:first-child { text-align:left; }
+  .st { display:inline-block; font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:99px; background:var(--amber-bg); color:var(--amber); }
+  .st.ok { background:#dff5f1; color:var(--teal-ink); }
   .two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   .two ul { margin:8px 0 0; padding-left:18px; color:var(--ink2); }
   footer { padding:28px 0 40px; color:var(--ink2); font-size:.88rem; border-top:1px solid var(--line); }
@@ -113,6 +126,8 @@
     .steps { display:none; }
     .pick { display:block; margin-bottom:14px; }
     .top nav a.opt { display:none; }
+    .cmp table { min-width:0; font-size:.78rem; }
+    .cmp th, .cmp td { padding:7px 3px; }
     section { padding:44px 0; }
     .hero { padding:44px 0 40px; }
     .stagehead .nav { margin-left:0; width:100%; }
@@ -122,7 +137,7 @@
 <body>
 <div class="top"><div class="wrap">
   <a class="brand" href="#inizio"><img src="img/icona.png" alt="">QONTARIS</a>
-  <nav aria-label="Sezioni"><a href="#video">Video</a><a href="#percorso">Percorso guidato</a><a href="#calcolo">Prova il calcolo</a><a class="opt" href="#profili">Profili</a><a class="opt" href="#stato">Stato del progetto</a></nav>
+  <nav aria-label="Sezioni"><a href="#video">Video</a><a href="#percorso">Percorso guidato</a><a href="#calcolo">Prova il calcolo</a><a href="#piani">Piani</a><a class="opt" href="#profili">Profili</a><a class="opt" href="#stato">Stato del progetto</a></nav>
 </div></div>
 
 <header class="hero" id="inizio"><div class="wrap">
@@ -196,6 +211,38 @@
   </div>
 </div></section>
 
+<section id="piani"><div class="wrap">
+  <div class="kicker">Listino</div>
+  <h2>Piani e prezzi</h2>
+  <p class="lead">Canoni mensili in euro, IVA esclusa. Il piano stabilisce cosa lo studio può usare; i permessi di ogni persona restano decisi dallo studio.</p>
+  <div class="plans">
+    <div class="card"><h3>Portale</h3><div class="price">59 € <small>al mese</small></div><div class="lim">2 utenti dello studio · 25 aziende</div><ul><li>Portale con il marchio dello studio</li><li>Invio di foto e file dal telefono</li><li>Richieste documentali e messaggi</li><li>Notifiche, checklist e scadenze</li><li>Archivio dei documenti</li></ul></div>
+    <div class="card"><h3>Studio</h3><div class="price">149 € <small>al mese</small></div><div class="lim">5 utenti dello studio · 75 aziende</div><ul><li>Tutto ciò che è in Portale</li><li>Lettura di XML, PDF e foto</li><li>Origine di ogni dato estratto</li><li>Duplicati rilevati, revisione per eccezioni</li><li>Esportazione tracciata verso il gestionale</li></ul></div>
+    <div class="card"><h3>Studio Pro</h3><div class="price">299 € <small>al mese</small></div><div class="lim">12 utenti dello studio · 200 aziende</div><ul><li>Tutto ciò che è in Studio</li><li>Quote di elaborazione superiori</li><li>Agenti IA per le funzioni autorizzate</li><li>Automazioni</li><li>Controllo di gestione dello studio</li></ul></div>
+    <div class="card"><h3>Multi-sede</h3><div class="price"><small>da</small> 599 € <small>al mese</small></div><div class="lim">utenti, aziende e sedi da contratto</div><ul><li>Tutto ciò che è in Studio Pro</li><li>Limiti e servizi definiti per contratto</li><li>Preventivo e attivazione dedicati</li></ul></div>
+  </div>
+  <div class="cmp"><table><thead><tr><th>Confronto</th><th>Portale</th><th>Studio</th><th>Studio Pro</th><th>Multi-sede</th></tr></thead><tbody>
+    <tr><td>Portale del cliente e invio dal telefono</td><td>sì</td><td>sì</td><td>sì</td><td>sì</td></tr>
+    <tr><td>Richieste, scadenze e archivio</td><td>sì</td><td>sì</td><td>sì</td><td>sì</td></tr>
+    <tr><td>Lettura dei documenti con origine del dato</td><td>—</td><td>sì</td><td>sì</td><td>sì</td></tr>
+    <tr><td>Contabilità, banche ed esportazione tracciata</td><td>—</td><td>sì</td><td>sì</td><td>sì</td></tr>
+    <tr><td>Agenti e automazioni</td><td>—</td><td>—</td><td>sì</td><td>sì</td></tr>
+    <tr><td>Limiti e servizi per contratto</td><td>—</td><td>—</td><td>—</td><td>sì</td></tr>
+  </tbody></table></div>
+  <div class="two" style="margin-top:22px">
+    <div class="card"><span class="tag">Programma pilota</span><h3>60 giorni a 99 € al mese</h3><p class="small" style="margin:6px 0 0">Le funzioni del piano Studio con l'avviamento incluso, fino a 5 utenti e 20 aziende. Riservato ai primi tre studi. Al termine non c'è alcun passaggio automatico: si prosegue solo con un'adesione esplicita al piano Studio a 149 € al mese.</p></div>
+    <div class="card"><span class="tag">Una tantum</span><h3>Avviamento · 390 €</h3><p class="small" style="margin:6px 0 0">Configurazione dei ruoli, importazione iniziale delle anagrafiche e formazione. Preventivo dedicato per migrazioni complesse e multi-sede.</p></div>
+  </div>
+  <h3 style="margin:26px 0 10px">Estensioni</h3>
+  <div class="grid3">
+    <div class="card"><span class="st ok">Disponibile</span><h3 style="margin-top:8px">Portale lavoratore</h3><p>1,50 € al mese per lavoratore attivo, con un minimo di 29 € al mese per studio. Consegna protetta dei cedolini e dei documenti personali.</p></div>
+    <div class="card"><span class="st">In preparazione</span><h3 style="margin-top:8px">Revisione specialistica</h3><p>Prezzo da definire dopo la validazione del modulo.</p></div>
+    <div class="card"><span class="st">In preparazione</span><h3 style="margin-top:8px">Azienda Plus</h3><p>Funzioni aziendali aggiuntive, da validare. Il portale aziendale di base è già compreso.</p></div>
+    <div class="card"><span class="st">In preparazione</span><h3 style="margin-top:8px">Elaborazione paghe</h3><p>Tariffa per cedolino, da definire. Il calcolo esiste ma va validato con un consulente del lavoro prima della vendita.</p></div>
+  </div>
+  <p class="small" style="margin-top:16px">I pagamenti non sono automatici: nessun fornitore di pagamenti è collegato e ogni piano viene attivato dall'amministrazione di QONTARIS.</p>
+</div></section>
+
 <section class="alt" id="profili"><div class="wrap">
   <div class="kicker">Per chi è</div>
   <h2>Quattro profili, quattro spazi</h2>
@@ -224,12 +271,13 @@
   <div class="two">
     <div class="card"><h3>Costruito e verificato</h3><ul>
       <li>Tutte le funzioni mostrate nel percorso guidato</li>
-      <li>144 test automatici e 94 verifiche sull'app in esecuzione</li>
+      <li>151 test automatici e 94 verifiche sull'app in esecuzione</li>
+      <li>Piani con limiti applicati, pagamenti registrati una sola volta, esportazione verso il gestionale ripetibile senza duplicati</li>
       <li>Calcoli delle paghe controllati su casi svolti a mano</li>
       <li>Registro di ogni operazione, accesso in due passaggi, isolamento tra studi</li></ul></div>
     <div class="card"><h3>Ancora da fare</h3><ul>
       <li>Conferma dei parametri di legge da parte di un professionista e confronto con cedolini reali</li>
-      <li>Collegamenti esterni: fatturazione elettronica (SdI), posta certificata, banche, firma, conservazione</li>
+      <li>Collegamenti esterni: fatturazione elettronica (SdI), posta certificata, banche, firma, conservazione, incasso dei canoni</li>
       <li>Malattia, maternità e infortunio calcolati in automatico; invii telematici</li>
       <li>Verifica di sicurezza indipendente prima dell'uso con dati reali</li></ul></div>
   </div>
