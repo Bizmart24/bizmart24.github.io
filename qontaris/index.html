@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QONTARIS · il gestionale per lo studio professionale</title>
+<meta name="description" content="QONTARIS: documenti, contabilità, paghe, revisione e procedure per commercialisti e studi professionali. Le schermate reali della piattaforma.">
+<link rel="icon" href="img/icona.png">
+<style>
+  :root { --navy:#102A43; --teal:#15B8A6; --teal-ink:#0b7d72; --bg:#F6F8FA; --surface:#fff; --ink:#102A43; --ink2:#52667a; --line:#dfe5eb; --amber:#b76e00; --amber-bg:#fff4dd; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0b1a28; --surface:#11263a; --ink:#e8eef4; --ink2:#a9b9c8; --line:#23405a; --teal-ink:#4fd8c8; --amber:#f2b34a; --amber-bg:#3a2c0d; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:linear-gradient(120deg,#102A43,#17425f 70%,#0f6b68 130%); color:#fff; padding:28px 20px 24px; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  .brand { display:flex; align-items:center; gap:12px; font-weight:750; letter-spacing:.08em; }
+  .brand img { width:40px; height:40px; background:#F6F8FA; border-radius:10px; padding:5px; }
+  h1 { font-size:1.5rem; line-height:1.25; margin:18px 0 6px; text-wrap:balance; }
+  header p { margin:0; color:#c9d8e4; max-width:62ch; }
+  nav { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line); }
+  nav .wrap { display:flex; gap:4px; overflow-x:auto; padding:0 12px; }
+  nav button { font:inherit; font-weight:600; color:var(--ink2); background:none; border:0; border-bottom:2px solid transparent; padding:12px 12px; cursor:pointer; white-space:nowrap; }
+  nav button[aria-selected="true"] { color:var(--ink); border-color:var(--teal); }
+  main { padding:20px 16px 48px; }
+  .mods { list-style:none; margin:0 0 20px; padding:0; display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+  .mods li { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; color:var(--ink2); font-size:.92rem; }
+  .mods strong { display:block; color:var(--ink); font-size:1rem; margin-bottom:2px; }
+  footer { border-top:1px solid var(--line); padding:18px 16px 28px; color:var(--ink2); font-size:.88rem; }
+  .note { background:var(--amber-bg); border-left:3px solid var(--amber); border-radius:8px; padding:10px 12px; font-size:.92rem; margin-bottom:20px; }
+  section[hidden] { display:none; }
+  .grid { display:grid; gap:20px; }
+  figure { margin:0; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  figure button { display:block; width:100%; padding:0; border:0; background:#0e2538; cursor:zoom-in; }
+  figure img { display:block; width:100%; height:auto; }
+  figure.phone button { padding:16px 0; } figure.phone img { width:min(300px,70%); margin:0 auto; border-radius:14px; }
+  figcaption { padding:12px 14px 14px; }
+  figcaption strong { display:block; margin-bottom:2px; }
+  figcaption span { color:var(--ink2); font-size:.92rem; }
+  @media (min-width:860px) { .two { grid-template-columns:1fr 1fr; } }
+  dialog { border:0; padding:0; background:transparent; max-width:96vw; max-height:96vh; }
+  dialog::backdrop { background:rgba(8,21,33,.82); }
+  dialog img { display:block; max-width:96vw; max-height:88vh; border-radius:8px; }
+  dialog button { font:inherit; font-weight:600; margin:10px auto 0; display:block; padding:8px 16px; border-radius:8px; border:1px solid #fff; background:transparent; color:#fff; cursor:pointer; }
+  :focus-visible { outline:3px solid var(--teal); outline-offset:2px; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><img src="img/icona.png" alt="">QONTARIS</div>
+  <h1>Lo studio professionale in un'unica piattaforma</h1>
+  <p>Documenti, contabilità, paghe, revisione legale e procedure, con un'area per il cliente e una per il lavoratore. Qui sotto le schermate reali della piattaforma in esecuzione.</p>
+</div></header>
+<nav aria-label="Profili"><div class="wrap" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="studio">Studio</button>
+  <button role="tab" aria-selected="false" data-tab="paghe">Paghe</button>
+  <button role="tab" aria-selected="false" data-tab="cliente">Cliente</button>
+  <button role="tab" aria-selected="false" data-tab="lavoratore">Lavoratore</button>
+  <button role="tab" aria-selected="false" data-tab="telefono">Da telefono</button>
+</div></nav>
+<main><div class="wrap">
+  <ul class="mods">
+    <li><strong>Documenti</strong>Lettura di fatture elettroniche, PDF e foto, duplicati, archivio per cliente</li>
+    <li><strong>Contabilità</strong>Prima nota, IVA, cespiti, banche e riconciliazione, preventivi e parcelle</li>
+    <li><strong>Paghe</strong>Cedolini, conguaglio, TFR, ferie e permessi, prospetto dei versamenti</li>
+    <li><strong>Revisione e procedure</strong>Carte di lavoro, evidenze, domande di credito e riparto</li>
+    <li><strong>Assistente e agenti</strong>Preparano bozze e proposte: la conferma resta a una persona</li>
+    <li><strong>Quattro profili</strong>Studio, dipendente dello studio, cliente, lavoratore</li>
+  </ul>
+  <div class="note"><strong>Questa pagina è una presentazione.</strong> Mostra schermate vere della piattaforma, ma da qui non si accede e non si lavora: QONTARIS è in sviluppo e non è ancora aperta al pubblico. Nomi, aziende e importi che vedi sono dati di prova inventati.</div>
+
+  <section id="studio" class="grid">
+    <figure><button data-src="img/dash.png"><img src="img/dash.png" alt="Dashboard dello studio con indicatori e priorità" loading="lazy"></button>
+      <figcaption><strong>Oggi · dashboard dello studio</strong><span>Ogni riquadro è un conteggio sui dati reali e apre l'elenco che lo giustifica. Sotto: priorità, attività, scadenze.</span></figcaption></figure>
+    <figure><button data-src="img/doc.png"><img src="img/doc.png" alt="Revisione di una fattura con proposta di cliente e dati estratti" loading="lazy"></button>
+      <figcaption><strong>Revisione di un documento</strong><span>Proposta di cliente e categoria con i motivi; per ogni campo estratto, il punto del file da cui è stato letto.</span></figcaption></figure>
+    <div class="grid two">
+      <figure><button data-src="img/agenti.png"><img src="img/agenti.png" alt="Pagina Agenti con pacchetto attivo e catalogo dei ruoli" loading="lazy"></button>
+        <figcaption><strong>Agenti</strong><span>Pacchetto attivo, operazioni del mese, catalogo dei ruoli con competenze e permessi.</span></figcaption></figure>
+      <figure><button data-src="img/team.png"><img src="img/team.png" alt="Pagina Team e accessi" loading="lazy"></button>
+        <figcaption><strong>Team e accessi</strong><span>Dipendenti, profili cliente, inviti e permessi dei ruoli, regolati dall'amministratore.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="paghe" class="grid" hidden>
+    <figure><button data-src="img/cedolino.png"><img src="img/cedolino.png" alt="Cedolino calcolato con voci, imposta e costo per l'azienda" loading="lazy"></button>
+      <figcaption><strong>Il cedolino</strong><span>Dal lordo al netto e al costo per l'azienda, con il dettaglio di come è stata calcolata l'imposta e i parametri di legge usati.</span></figcaption></figure>
+    <div class="grid two">
+      <figure><button data-src="img/paghe.png"><img src="img/paghe.png" alt="Elenco dei cedolini del mese" loading="lazy"></button>
+        <figcaption><strong>I cedolini del mese</strong><span>Bozze, conferme e consegna al lavoratore, per tutte le aziende seguite dallo studio.</span></figcaption></figure>
+      <figure><button data-src="img/adempimenti.png"><img src="img/adempimenti.png" alt="Parametri di legge con fonte e stato di conferma" loading="lazy"></button>
+        <figcaption><strong>Parametri di legge con la fonte</strong><span>Scaglioni, detrazioni e fasce contributive riportano la norma di riferimento e chi li ha confermati.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="cliente" class="grid" hidden>
+    <figure><button data-src="img/portale.png"><img src="img/portale.png" alt="Dashboard del cliente" loading="lazy"></button>
+      <figcaption><strong>La dashboard del cliente</strong><span>Richieste dello studio, documenti in lavorazione, vendite e acquisti già verificati, scadenze condivise, messaggi.</span></figcaption></figure>
+    <figure class="phone"><button data-src="img/portale-m.png"><img src="img/portale-m.png" alt="Dashboard del cliente su telefono" loading="lazy"></button>
+      <figcaption><strong>Lo stesso spazio, da telefono</strong><span>Il pulsante centrale «Invia» apre fotocamera e caricamento file.</span></figcaption></figure>
+  </section>
+
+  <section id="lavoratore" class="grid" hidden>
+    <figure class="phone"><button data-src="img/lavoratore.png"><img src="img/lavoratore.png" alt="Area del lavoratore con cedolini, ferie, permessi e TFR" loading="lazy"></button>
+      <figcaption><strong>L'area del lavoratore</strong><span>Ogni dipendente vede e scarica solo i propri cedolini consegnati, con ferie, permessi e TFR maturato.</span></figcaption></figure>
+  </section>
+
+  <section id="telefono" class="grid" hidden>
+    <figure class="phone"><button data-src="img/mobile.png"><img src="img/mobile.png" alt="Dashboard dello studio su telefono" loading="lazy"></button>
+      <figcaption><strong>Lo studio da telefono</strong><span>Navigazione in basso: Studio, Clienti, Acquisisci, Documenti, Assistente.</span></figcaption></figure>
+  </section>
+</div></main>
+<footer><div class="wrap">QONTARIS · un progetto BizMart</div></footer>
+<dialog id="zoom" aria-label="Schermata ingrandita"><img alt=""><button type="button">Chiudi</button></dialog>
+<script>
+  const tabs = [...document.querySelectorAll("[data-tab]")];
+  function show(name) {
+    if (!tabs.some((t) => t.dataset.tab === name)) name = "studio";
+    tabs.forEach((t) => t.setAttribute("aria-selected", t.dataset.tab === name));
+    document.querySelectorAll("main section").forEach((s) => (s.hidden = s.id !== name));
+  }
+  tabs.forEach((t) => t.addEventListener("click", () => { show(t.dataset.tab); try { history.replaceState(null, "", "#" + t.dataset.tab); } catch (e) {} }));
+  addEventListener("hashchange", () => show(location.hash.slice(1)));
+  show(location.hash.slice(1));
+  // Un collegamento a una scheda apre la pagina dall'inizio, non a metà.
+  addEventListener("load", () => scrollTo(0, 0));
+  const dlg = document.getElementById("zoom");
+  document.querySelectorAll("[data-src]").forEach((b) => b.addEventListener("click", () => {
+    const img = dlg.querySelector("img");
+    img.src = b.dataset.src; img.alt = b.querySelector("img").alt;
+    dlg.showModal();
+  }));
+  dlg.querySelector("button").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+</script>
+</body>
+</html>
