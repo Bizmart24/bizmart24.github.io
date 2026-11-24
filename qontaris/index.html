@@ -3,134 +3,334 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QONTARIS · il gestionale per lo studio professionale</title>
-<meta name="description" content="QONTARIS: documenti, contabilità, paghe, revisione e procedure per commercialisti e studi professionali. Le schermate reali della piattaforma.">
+<title>QONTARIS · lo studio professionale in un'unica piattaforma</title>
+<meta name="description" content="Presentazione interattiva di QONTARIS: documenti, contabilità, paghe, revisione e procedure per lo studio professionale. Percorso guidato, video e calcolo dimostrativo del cedolino.">
 <link rel="icon" href="img/icona.png">
 <style>
-  :root { --navy:#102A43; --teal:#15B8A6; --teal-ink:#0b7d72; --bg:#F6F8FA; --surface:#fff; --ink:#102A43; --ink2:#52667a; --line:#dfe5eb; --amber:#b76e00; --amber-bg:#fff4dd; }
+  :root { --navy:#102A43; --navy2:#17425f; --teal:#15B8A6; --teal-ink:#0b7d72; --bg:#F6F8FA; --surface:#fff; --ink:#102A43; --ink2:#52667a; --line:#dfe5eb; --amber:#b76e00; --amber-bg:#fff4dd; --hot:#ffb020; }
   @media (prefers-color-scheme: dark) { :root { --bg:#0b1a28; --surface:#11263a; --ink:#e8eef4; --ink2:#a9b9c8; --line:#23405a; --teal-ink:#4fd8c8; --amber:#f2b34a; --amber-bg:#3a2c0d; } }
-  * { box-sizing: border-box; }
-  body { margin:0; font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); }
-  header { background:linear-gradient(120deg,#102A43,#17425f 70%,#0f6b68 130%); color:#fff; padding:28px 20px 24px; }
-  .wrap { max-width:1080px; margin:0 auto; }
-  .brand { display:flex; align-items:center; gap:12px; font-weight:750; letter-spacing:.08em; }
-  .brand img { width:40px; height:40px; background:#F6F8FA; border-radius:10px; padding:5px; }
-  h1 { font-size:1.5rem; line-height:1.25; margin:18px 0 6px; text-wrap:balance; }
-  header p { margin:0; color:#c9d8e4; max-width:62ch; }
-  nav { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line); }
-  nav .wrap { display:flex; gap:4px; overflow-x:auto; padding:0 12px; }
-  nav button { font:inherit; font-weight:600; color:var(--ink2); background:none; border:0; border-bottom:2px solid transparent; padding:12px 12px; cursor:pointer; white-space:nowrap; }
-  nav button[aria-selected="true"] { color:var(--ink); border-color:var(--teal); }
-  main { padding:20px 16px 48px; }
-  .mods { list-style:none; margin:0 0 20px; padding:0; display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
-  .mods li { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; color:var(--ink2); font-size:.92rem; }
-  .mods strong { display:block; color:var(--ink); font-size:1rem; margin-bottom:2px; }
-  footer { border-top:1px solid var(--line); padding:18px 16px 28px; color:var(--ink2); font-size:.88rem; }
-  .note { background:var(--amber-bg); border-left:3px solid var(--amber); border-radius:8px; padding:10px 12px; font-size:.92rem; margin-bottom:20px; }
-  section[hidden] { display:none; }
-  .grid { display:grid; gap:20px; }
-  figure { margin:0; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-  figure button { display:block; width:100%; padding:0; border:0; background:#0e2538; cursor:zoom-in; }
-  figure img { display:block; width:100%; height:auto; }
-  figure.phone button { padding:16px 0; } figure.phone img { width:min(300px,70%); margin:0 auto; border-radius:14px; }
-  figcaption { padding:12px 14px 14px; }
-  figcaption strong { display:block; margin-bottom:2px; }
-  figcaption span { color:var(--ink2); font-size:.92rem; }
-  @media (min-width:860px) { .two { grid-template-columns:1fr 1fr; } }
-  dialog { border:0; padding:0; background:transparent; max-width:96vw; max-height:96vh; }
-  dialog::backdrop { background:rgba(8,21,33,.82); }
-  dialog img { display:block; max-width:96vw; max-height:88vh; border-radius:8px; }
-  dialog button { font:inherit; font-weight:600; margin:10px auto 0; display:block; padding:8px 16px; border-radius:8px; border:1px solid #fff; background:transparent; color:#fff; cursor:pointer; }
-  :focus-visible { outline:3px solid var(--teal); outline-offset:2px; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; scroll-padding-top:64px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { animation:none !important; transition:none !important; } }
+  body { margin:0; font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3 { line-height:1.2; text-wrap:balance; margin:0; }
+  a { color:var(--teal-ink); }
+  :focus-visible { outline:3px solid var(--teal); outline-offset:2px; border-radius:4px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; font:inherit; font-weight:650; padding:11px 18px; border-radius:10px; border:1px solid transparent; cursor:pointer; text-decoration:none; }
+  .btn.primary { background:var(--teal); color:#062a27; }
+  .btn.ghost { background:transparent; color:#fff; border-color:rgba(255,255,255,.45); }
+  .btn.line { background:var(--surface); color:var(--ink); border-color:var(--line); }
+  .btn.sm { padding:7px 12px; font-size:.9rem; }
+
+  .top { position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .top .wrap { display:flex; align-items:center; gap:18px; height:56px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.09em; color:var(--ink); text-decoration:none; }
+  .brand img { width:30px; height:30px; background:#F6F8FA; border-radius:8px; padding:4px; }
+  .top nav { display:flex; gap:4px; margin-left:auto; overflow-x:auto; }
+  .top nav a { color:var(--ink2); text-decoration:none; font-weight:600; font-size:.93rem; padding:8px 10px; border-radius:8px; white-space:nowrap; }
+  .top nav a:hover { color:var(--ink); background:var(--surface); }
+
+  .hero { background:linear-gradient(125deg,#0c2136,#17425f 62%,#0f6b68 125%); color:#fff; padding:64px 0 56px; }
+  .hero h1 { font-size:clamp(2rem,4.6vw,3.3rem); letter-spacing:-.02em; max-width:17ch; }
+  .hero p { color:#c9d8e4; font-size:1.12rem; max-width:58ch; margin:18px 0 26px; }
+  .hero .row { display:flex; flex-wrap:wrap; gap:12px; }
+  .facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-top:44px; }
+  .facts div { border-top:1px solid rgba(255,255,255,.22); padding-top:12px; }
+  .facts b { display:block; font-size:1.7rem; font-variant-numeric:tabular-nums; }
+  .facts span { color:#b9cbd9; font-size:.9rem; }
+
+  section { padding:64px 0; }
+  section.alt { background:var(--surface); border-block:1px solid var(--line); }
+  .kicker { color:var(--teal-ink); font-weight:700; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; }
+  h2 { font-size:clamp(1.5rem,3vw,2.1rem); margin:6px 0 10px; letter-spacing:-.01em; }
+  .lead { color:var(--ink2); max-width:66ch; margin:0 0 28px; }
+
+  video { display:block; width:100%; border-radius:14px; background:#081521; border:1px solid var(--line); aspect-ratio:16/9; }
+
+  .tour { display:grid; grid-template-columns:270px minmax(0,1fr); gap:24px; align-items:start; }
+  .steps { position:sticky; top:72px; max-height:calc(100vh - 90px); overflow:auto; padding-right:4px; }
+  .steps h3 { font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink2); margin:16px 0 6px; }
+  .steps h3:first-child { margin-top:0; }
+  .steps button { display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; font:inherit; color:var(--ink); background:none; border:0; border-left:3px solid transparent; padding:8px 10px; border-radius:0 8px 8px 0; cursor:pointer; }
+  .steps button i { font-style:normal; font-variant-numeric:tabular-nums; color:var(--ink2); font-size:.82rem; min-width:1.6em; }
+  .steps button:hover { background:color-mix(in srgb, var(--teal) 10%, transparent); }
+  .steps button[aria-current="true"] { border-color:var(--teal); background:color-mix(in srgb, var(--teal) 14%, transparent); font-weight:650; }
+  .pick { display:none; }
+  .stage { min-width:0; }
+  .stagehead { display:flex; flex-wrap:wrap; align-items:end; gap:12px; margin-bottom:14px; }
+  .stagehead .num { font-size:.82rem; font-weight:700; color:var(--teal-ink); letter-spacing:.08em; text-transform:uppercase; }
+  .stagehead h3 { font-size:1.45rem; }
+  .stagehead p { margin:2px 0 0; color:var(--ink2); }
+  .stagehead .nav { margin-left:auto; display:flex; gap:8px; }
+  .shot { position:relative; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e2538; box-shadow:0 14px 40px -22px rgba(8,21,33,.55); }
+  .shot.phone { max-width:320px; margin:0 auto; border-radius:22px; }
+  .shot img { display:block; width:100%; height:auto; }
+  .hot { position:absolute; border:2px solid var(--hot); border-radius:8px; box-shadow:0 0 0 9999px rgba(8,21,33,0); transition:box-shadow .25s, opacity .25s; opacity:.0; pointer-events:none; }
+  .hot::before { content:attr(data-n); position:absolute; top:-13px; left:-13px; width:26px; height:26px; border-radius:50%; background:var(--hot); color:#2b1b00; font-weight:800; font-size:.85rem; display:grid; place-items:center; }
+  .shot.all .hot { opacity:1; }
+  .hot.on { opacity:1; box-shadow:0 0 0 9999px rgba(8,21,33,.55); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { border-color:#fff; } }
+  .acts { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px; }
+  .acts button { font:inherit; font-size:.92rem; text-align:left; display:flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; }
+  .acts button b { width:22px; height:22px; flex:none; border-radius:50%; background:var(--hot); color:#2b1b00; display:grid; place-items:center; font-size:.8rem; }
+  .acts button[aria-pressed="true"] { border-color:var(--hot); background:color-mix(in srgb, var(--hot) 16%, var(--surface)); }
+  .acts .hint { color:var(--ink2); font-size:.85rem; align-self:center; }
+  .expl { display:grid; gap:10px; margin:14px 0 0; padding:0; list-style:none; counter-reset:b; }
+  .expl li { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px 12px 46px; position:relative; }
+  section.alt .expl li, section.alt .acts button, section.alt .btn.line { background:var(--bg); }
+  .expl li::before { counter-increment:b; content:counter(b); position:absolute; left:14px; top:12px; width:22px; height:22px; border-radius:6px; background:var(--navy); color:#fff; font-size:.8rem; font-weight:700; display:grid; place-items:center; }
+  .bar { height:4px; background:var(--line); border-radius:4px; margin:18px 0 0; overflow:hidden; }
+  .bar i { display:block; height:100%; background:var(--teal); width:0; transition:width .3s; }
+
+  .calc { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:24px; align-items:start; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; }
+  section.alt .card { background:var(--bg); }
+  .fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  label { display:grid; gap:4px; font-size:.88rem; font-weight:600; color:var(--ink2); }
+  input, select { font:inherit; padding:9px 10px; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink); min-width:0; width:100%; }
+  .check { display:flex; align-items:center; gap:8px; grid-column:1/-1; }
+  .check input { width:auto; }
+  .net { font-size:2.4rem; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+  table { width:100%; border-collapse:collapse; font-size:.92rem; }
+  td { padding:6px 0; border-bottom:1px solid var(--line); }
+  td:last-child { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr.tot td { font-weight:700; border-bottom:0; }
+  .small { font-size:.86rem; color:var(--ink2); }
+  .note { background:var(--amber-bg); border-left:3px solid var(--amber); border-radius:8px; padding:10px 12px; font-size:.9rem; margin-top:14px; }
+
+  .grid3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+  .grid3 h3 { font-size:1.05rem; margin-bottom:6px; }
+  .grid3 p, .grid3 ul { margin:0; color:var(--ink2); font-size:.94rem; }
+  .grid3 ul { padding-left:18px; }
+  .tag { display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--teal-ink); margin-bottom:6px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .two ul { margin:8px 0 0; padding-left:18px; color:var(--ink2); }
+  footer { padding:28px 0 40px; color:var(--ink2); font-size:.88rem; border-top:1px solid var(--line); }
+
+  @media (max-width:900px) {
+    .tour, .calc, .two { grid-template-columns:1fr; }
+    .steps { display:none; }
+    .pick { display:block; margin-bottom:14px; }
+    .top nav a.opt { display:none; }
+    section { padding:44px 0; }
+    .hero { padding:44px 0 40px; }
+    .stagehead .nav { margin-left:0; width:100%; }
+  }
 </style>
 </head>
 <body>
-<header><div class="wrap">
-  <div class="brand"><img src="img/icona.png" alt="">QONTARIS</div>
+<div class="top"><div class="wrap">
+  <a class="brand" href="#inizio"><img src="img/icona.png" alt="">QONTARIS</a>
+  <nav aria-label="Sezioni"><a href="#video">Video</a><a href="#percorso">Percorso guidato</a><a href="#calcolo">Prova il calcolo</a><a class="opt" href="#profili">Profili</a><a class="opt" href="#stato">Stato del progetto</a></nav>
+</div></div>
+
+<header class="hero" id="inizio"><div class="wrap">
   <h1>Lo studio professionale in un'unica piattaforma</h1>
-  <p>Documenti, contabilità, paghe, revisione legale e procedure, con un'area per il cliente e una per il lavoratore. Qui sotto le schermate reali della piattaforma in esecuzione.</p>
+  <p>Documenti, contabilità, paghe, revisione legale e procedure, con uno spazio per il cliente e uno per il lavoratore. Il programma prepara e propone; a confermare è sempre una persona.</p>
+  <div class="row">
+    <a class="btn primary" href="#percorso">Inizia il percorso guidato</a>
+    <a class="btn ghost" href="#video">Guarda il video</a>
+    <a class="btn ghost" href="qontaris-presentazione.pdf" download>Scarica la presentazione in PDF</a>
+  </div>
+  <div class="facts">
+    <div><b>4</b><span>profili: studio, dipendente, cliente, lavoratore</span></div>
+    <div><b>4</b><span>pacchetti di moduli attivabili</span></div>
+    <div><b>9</b><span>ruoli di agenti con limiti dichiarati</span></div>
+    <div><b>22</b><span>automazioni pronte da attivare</span></div>
+  </div>
 </div></header>
-<nav aria-label="Profili"><div class="wrap" role="tablist">
-  <button role="tab" aria-selected="true" data-tab="studio">Studio</button>
-  <button role="tab" aria-selected="false" data-tab="paghe">Paghe</button>
-  <button role="tab" aria-selected="false" data-tab="cliente">Cliente</button>
-  <button role="tab" aria-selected="false" data-tab="lavoratore">Lavoratore</button>
-  <button role="tab" aria-selected="false" data-tab="telefono">Da telefono</button>
-</div></nav>
-<main><div class="wrap">
-  <ul class="mods">
-    <li><strong>Documenti</strong>Lettura di fatture elettroniche, PDF e foto, duplicati, archivio per cliente</li>
-    <li><strong>Contabilità</strong>Prima nota, IVA, cespiti, banche e riconciliazione, preventivi e parcelle</li>
-    <li><strong>Paghe</strong>Cedolini, conguaglio, TFR, ferie e permessi, prospetto dei versamenti</li>
-    <li><strong>Revisione e procedure</strong>Carte di lavoro, evidenze, domande di credito e riparto</li>
-    <li><strong>Assistente e agenti</strong>Preparano bozze e proposte: la conferma resta a una persona</li>
-    <li><strong>Quattro profili</strong>Studio, dipendente dello studio, cliente, lavoratore</li>
-  </ul>
-  <div class="note"><strong>Questa pagina è una presentazione.</strong> Mostra schermate vere della piattaforma, ma da qui non si accede e non si lavora: QONTARIS è in sviluppo e non è ancora aperta al pubblico. Nomi, aziende e importi che vedi sono dati di prova inventati.</div>
 
-  <section id="studio" class="grid">
-    <figure><button data-src="img/dash.png"><img src="img/dash.png" alt="Dashboard dello studio con indicatori e priorità" loading="lazy"></button>
-      <figcaption><strong>Oggi · dashboard dello studio</strong><span>Ogni riquadro è un conteggio sui dati reali e apre l'elenco che lo giustifica. Sotto: priorità, attività, scadenze.</span></figcaption></figure>
-    <figure><button data-src="img/doc.png"><img src="img/doc.png" alt="Revisione di una fattura con proposta di cliente e dati estratti" loading="lazy"></button>
-      <figcaption><strong>Revisione di un documento</strong><span>Proposta di cliente e categoria con i motivi; per ogni campo estratto, il punto del file da cui è stato letto.</span></figcaption></figure>
-    <div class="grid two">
-      <figure><button data-src="img/agenti.png"><img src="img/agenti.png" alt="Pagina Agenti con pacchetto attivo e catalogo dei ruoli" loading="lazy"></button>
-        <figcaption><strong>Agenti</strong><span>Pacchetto attivo, operazioni del mese, catalogo dei ruoli con competenze e permessi.</span></figcaption></figure>
-      <figure><button data-src="img/team.png"><img src="img/team.png" alt="Pagina Team e accessi" loading="lazy"></button>
-        <figcaption><strong>Team e accessi</strong><span>Dipendenti, profili cliente, inviti e permessi dei ruoli, regolati dall'amministratore.</span></figcaption></figure>
+<section id="video"><div class="wrap">
+  <div class="kicker">In due minuti</div>
+  <h2>Il video introduttivo</h2>
+  <p class="lead">Tutti i passaggi in sequenza, sulle schermate reali della piattaforma. Il video è senza audio: ogni scena ha la sua didascalia.</p>
+  <video controls preload="metadata" poster="img/poster.jpg" src="qontaris-introduzione.mp4"></video>
+</div></section>
+
+<section class="alt" id="percorso"><div class="wrap">
+  <div class="kicker">Percorso guidato</div>
+  <h2>Come si lavora, passo per passo</h2>
+  <p class="lead">Scegli un passaggio: vedi la schermata reale e, toccando un'azione, il punto esatto in cui si trova. Con le frecce della tastiera vai avanti e indietro.</p>
+  <label class="pick">Passaggio<select id="pick"></select></label>
+  <div class="tour">
+    <div class="steps" id="steps" role="navigation" aria-label="Passaggi"></div>
+    <div class="stage">
+      <div class="stagehead">
+        <div><div class="num" id="snum"></div><h3 id="stitle"></h3><p id="ssub"></p></div>
+        <div class="nav"><button class="btn line sm" id="prev">← Precedente</button><button class="btn line sm" id="next">Successivo →</button></div>
+      </div>
+      <div class="shot all" id="shot"><img id="simg" alt=""></div>
+      <div class="acts" id="acts" aria-label="Azioni in evidenza"></div>
+      <ol class="expl" id="expl"></ol>
+      <div class="bar" aria-hidden="true"><i id="bar"></i></div>
     </div>
-  </section>
+  </div>
+</div></section>
 
-  <section id="paghe" class="grid" hidden>
-    <figure><button data-src="img/cedolino.png"><img src="img/cedolino.png" alt="Cedolino calcolato con voci, imposta e costo per l'azienda" loading="lazy"></button>
-      <figcaption><strong>Il cedolino</strong><span>Dal lordo al netto e al costo per l'azienda, con il dettaglio di come è stata calcolata l'imposta e i parametri di legge usati.</span></figcaption></figure>
-    <div class="grid two">
-      <figure><button data-src="img/paghe.png"><img src="img/paghe.png" alt="Elenco dei cedolini del mese" loading="lazy"></button>
-        <figcaption><strong>I cedolini del mese</strong><span>Bozze, conferme e consegna al lavoratore, per tutte le aziende seguite dallo studio.</span></figcaption></figure>
-      <figure><button data-src="img/adempimenti.png"><img src="img/adempimenti.png" alt="Parametri di legge con fonte e stato di conferma" loading="lazy"></button>
-        <figcaption><strong>Parametri di legge con la fonte</strong><span>Scaglioni, detrazioni e fasce contributive riportano la norma di riferimento e chi li ha confermati.</span></figcaption></figure>
+<section id="calcolo"><div class="wrap">
+  <div class="kicker">Prova tu</div>
+  <h2>Calcola un cedolino dimostrativo</h2>
+  <p class="lead">Qui gira lo stesso motore di calcolo della piattaforma, direttamente nel tuo browser. Cambia i valori e guarda come si forma il netto.</p>
+  <div class="calc">
+    <form class="card" id="cform" onsubmit="return false">
+      <div class="fields">
+        <label>Retribuzione lorda mensile (€)<input id="c-gross" inputmode="decimal" value="2000"></label>
+        <label>Mensilità<select id="c-mens"><option>12</option><option selected>13</option><option>14</option></select></label>
+        <label>Mese<select id="c-month"></select></label>
+        <label>Part-time (%)<input id="c-pt" inputmode="decimal" value="100"></label>
+        <label>Contributi a carico del lavoratore (%)<input id="c-ee" inputmode="decimal" value="9,19"></label>
+        <label>Contributi a carico dell'azienda (%)<input id="c-er" inputmode="decimal" value="30"></label>
+        <label>Ore di straordinario (+25%)<input id="c-ot" inputmode="decimal" value="0"></label>
+        <label>Tasso INAIL (%)<input id="c-inail" inputmode="decimal" value="1"></label>
+        <label class="check"><input type="checkbox" id="c-td"> Contratto a tempo determinato</label>
+      </div>
+      <p class="small" style="margin:14px 0 0">Aliquote dell'azienda, divisore orario (173) e maggiorazione sono valori di esempio: nella piattaforma li inserisce lo studio, per ogni azienda e contratto, indicando la fonte.</p>
+    </form>
+    <div class="card" aria-live="polite">
+      <div class="small">Netto del mese</div>
+      <div class="net" id="c-net">—</div>
+      <table id="c-table"></table>
+      <div class="note"><strong>Calcolo dimostrativo.</strong> Usa i parametri 2026 precaricati (IRPEF, detrazioni, cuneo fiscale, fasce INPS, TFR), che nella piattaforma restano «da confermare» finché un professionista non li verifica. Non considera carichi di famiglia, addizionali, altri redditi né le regole del singolo contratto collettivo. Non è una busta paga e non sostituisce un consulente.</div>
     </div>
-  </section>
+  </div>
+</div></section>
 
-  <section id="cliente" class="grid" hidden>
-    <figure><button data-src="img/portale.png"><img src="img/portale.png" alt="Dashboard del cliente" loading="lazy"></button>
-      <figcaption><strong>La dashboard del cliente</strong><span>Richieste dello studio, documenti in lavorazione, vendite e acquisti già verificati, scadenze condivise, messaggi.</span></figcaption></figure>
-    <figure class="phone"><button data-src="img/portale-m.png"><img src="img/portale-m.png" alt="Dashboard del cliente su telefono" loading="lazy"></button>
-      <figcaption><strong>Lo stesso spazio, da telefono</strong><span>Il pulsante centrale «Invia» apre fotocamera e caricamento file.</span></figcaption></figure>
-  </section>
+<section class="alt" id="profili"><div class="wrap">
+  <div class="kicker">Per chi è</div>
+  <h2>Quattro profili, quattro spazi</h2>
+  <p class="lead">Ogni persona entra nel proprio spazio e vede solo ciò che le serve.</p>
+  <div class="grid3">
+    <div class="card"><span class="tag">Studio</span><h3>Titolare e professionisti</h3><p>Tutto lo studio: clienti, documenti, contabilità, paghe, revisione, procedure, agenti, permessi.</p></div>
+    <div class="card"><span class="tag">Studio</span><h3>Dipendente dello studio</h3><p>Accesso regolato da un amministratore, anche limitato ai soli clienti assegnati.</p></div>
+    <div class="card"><span class="tag">Portale</span><h3>Cliente</h3><p>Invia documenti, risponde alle richieste, segue la propria contabilità con l'aiuto di un assistente.</p></div>
+    <div class="card"><span class="tag">Area personale</span><h3>Lavoratore</h3><p>I propri cedolini consegnati, ferie, permessi e TFR. Nient'altro.</p></div>
+  </div>
+  <h2 style="margin-top:44px">Pacchetti</h2>
+  <p class="lead">Lo studio attiva solo ciò che usa.</p>
+  <div class="grid3">
+    <div class="card"><span class="tag">Moduli</span><h3>Studio</h3><p>Documenti, clienti e portale, attività e scadenze, contabilità, banche, report.</p></div>
+    <div class="card"><span class="tag">Moduli</span><h3>Paghe &amp; Personale</h3><p>Dipendenti, contratti, cedolini, TFR, versamenti, dati per la CU, area del lavoratore.</p></div>
+    <div class="card"><span class="tag">Moduli</span><h3>Revisione</h3><p>Incarichi, materialità, carte di lavoro, evidenze, circolarizzazioni.</p></div>
+    <div class="card"><span class="tag">Moduli</span><h3>Crisi &amp; Procedure</h3><p>Fascicoli, domande di credito, inventario, registro, riparto.</p></div>
+    <div class="card"><span class="tag">Agenti</span><h3>Base · Team · Studio+</h3><p>3, 8 o 20 agenti, con 10.000, 20.000 o 50.000 operazioni al mese.</p></div>
+  </div>
+</div></section>
 
-  <section id="lavoratore" class="grid" hidden>
-    <figure class="phone"><button data-src="img/lavoratore.png"><img src="img/lavoratore.png" alt="Area del lavoratore con cedolini, ferie, permessi e TFR" loading="lazy"></button>
-      <figcaption><strong>L'area del lavoratore</strong><span>Ogni dipendente vede e scarica solo i propri cedolini consegnati, con ferie, permessi e TFR maturato.</span></figcaption></figure>
-  </section>
+<section id="stato"><div class="wrap">
+  <div class="kicker">Con trasparenza</div>
+  <h2>A che punto è il progetto</h2>
+  <p class="lead">QONTARIS è in sviluppo e non è ancora aperta al pubblico. Questa pagina è una presentazione: mostra schermate reali, ma da qui non si accede alla piattaforma.</p>
+  <div class="two">
+    <div class="card"><h3>Costruito e verificato</h3><ul>
+      <li>Tutte le funzioni mostrate nel percorso guidato</li>
+      <li>144 test automatici e 94 verifiche sull'app in esecuzione</li>
+      <li>Calcoli delle paghe controllati su casi svolti a mano</li>
+      <li>Registro di ogni operazione, accesso in due passaggi, isolamento tra studi</li></ul></div>
+    <div class="card"><h3>Ancora da fare</h3><ul>
+      <li>Conferma dei parametri di legge da parte di un professionista e confronto con cedolini reali</li>
+      <li>Collegamenti esterni: fatturazione elettronica (SdI), posta certificata, banche, firma, conservazione</li>
+      <li>Malattia, maternità e infortunio calcolati in automatico; invii telematici</li>
+      <li>Verifica di sicurezza indipendente prima dell'uso con dati reali</li></ul></div>
+  </div>
+  <p class="small" style="margin-top:18px">Nomi, aziende e importi nelle schermate sono dati di prova inventati.</p>
+</div></section>
 
-  <section id="telefono" class="grid" hidden>
-    <figure class="phone"><button data-src="img/mobile.png"><img src="img/mobile.png" alt="Dashboard dello studio su telefono" loading="lazy"></button>
-      <figcaption><strong>Lo studio da telefono</strong><span>Navigazione in basso: Studio, Clienti, Acquisisci, Documenti, Assistente.</span></figcaption></figure>
-  </section>
-</div></main>
 <footer><div class="wrap">QONTARIS · un progetto BizMart</div></footer>
-<dialog id="zoom" aria-label="Schermata ingrandita"><img alt=""><button type="button">Chiudi</button></dialog>
+
+<script>"use strict";var QEngine=(()=>{var V=Object.defineProperty;var ge=Object.getOwnPropertyDescriptor;var be=Object.getOwnPropertyNames;var fe=Object.prototype.hasOwnProperty;var Ce=(n,e)=>{for(var i in e)V(n,i,{get:e[i],enumerable:!0})},_e=(n,e,i,a)=>{if(e&&typeof e=="object"||typeof e=="function")for(let t of be(e))!fe.call(n,t)&&t!==i&&V(n,t,{get:()=>e[t],enumerable:!(a=ge(e,t))||a.enumerable});return n};var ye=n=>_e(V({},"__esModule",{value:!0}),n);var Be={};Ce(Be,{PARAM_KEYS:()=>he,bracketTax:()=>O,computePayslip:()=>ve,employedDays:()=>ce,isLeap:()=>re,isValidTaxCode:()=>le,monthDays:()=>ae,mulBp:()=>v,proposePayslipFigures:()=>we,rdiv:()=>g,tfrRevaluation:()=>De,yearDays:()=>Z,yearFigures:()=>G});var he=["irpef","detrazioni","cuneo","integrativo","inps","tfr"];function g(n,e){if(e<=0n)throw new Error("Divisore non valido");return n>=0n?(2n*n+e)/(2n*e):-((2n*-n+e)/(2n*e))}var v=(n,e)=>g(n*BigInt(e),10000n),s=n=>BigInt(Math.round(n)),_=n=>n>0n?n:0n;function O(n,e,i=1){if(n<=0n)return 0n;let a=BigInt(i),t=n*a,r=0n,m=0n;for(let d of e){let l=d.fino_cents==null?t:s(d.fino_cents),b=(t<l?t:l)-r;if(b>0n&&(m+=b*BigInt(d.aliquota_bp)),d.fino_cents==null||t<=l)break;r=l}return g(m,10000n*a)}var re=n=>n%4===0&&n%100!==0||n%400===0,Z=n=>re(n)?366:365,ae=(n,e)=>new Date(Date.UTC(n,e,0)).getUTCDate();function ce(n,e,i,a){let t=String(e).padStart(2,"0"),r=`${n}-${t}-01`,m=`${n}-${t}-${String(ae(n,e)).padStart(2,"0")}`,d=i>r?i:r,l=a&&a<m?a:m;return l<d?0:Number(l.slice(8,10))-Number(d.slice(8,10))+1}function G(n,e,i,a){let t=n.detrazioni,r=_(e)+_(i),m=[],d=O(e,n.irpef.scaglioni),l=0n,b=0n;r<=s(t.fascia1_fino_cents)?(l=s(t.fascia1_importo_cents),b=s(a?t.minimo_td_cents:t.minimo_cents)):r<=s(t.fascia2_fino_cents)?l=s(t.fascia2_base_cents)+g(s(t.fascia2_variabile_cents)*(s(t.fascia2_fino_cents)-r),s(t.fascia2_fino_cents)-s(t.fascia1_fino_cents)):r<=s(t.fascia3_fino_cents)&&(l=g(s(t.fascia3_base_cents)*(s(t.fascia3_fino_cents)-r),s(t.fascia3_fino_cents)-s(t.fascia2_fino_cents))),r>s(t.maggiorazione_da_cents)&&r<=s(t.maggiorazione_a_cents)&&(l+=s(t.maggiorazione_cents));let u=n.cuneo,T=0,y=0n;r<=s(u.ulteriore_da_cents)?T=u.somma.find(I=>e<=s(I.fino_cents))?.bp??0:r<=s(u.ulteriore_piena_fino_cents)?y=s(u.ulteriore_importo_cents):r<=s(u.ulteriore_fino_cents)&&(y=g(s(u.ulteriore_importo_cents)*(s(u.ulteriore_fino_cents)-r),s(u.ulteriore_fino_cents)-s(u.ulteriore_piena_fino_cents)));let h=n.integrativo,D=0n;return r<=s(h.limite_cents)?d>l-s(h.franchigia_cents)&&(D=s(h.importo_cents)):r<=s(h.fascia_non_calcolata_fino_cents)&&m.push("Trattamento integrativo non calcolato: in questa fascia di reddito dipende da detrazioni che il datore di lavoro non conosce (mutui, spese, familiari). Lo valuta lo studio."),{rcCents:r,grossCents:d,workDeductionCents:l,minimumCents:b,wedgeDeductionCents:y,wedgeSumBp:T,supplementCents:D,notes:m}}var E=n=>{let e=n<0n,i=e?-n:n;return`${e?"-":""}${(i/100n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")},${(i%100n).toString().padStart(2,"0")}`},W=n=>(n/100).toLocaleString("it-IT")+"%",se=n=>(n/100).toLocaleString("it-IT",{minimumFractionDigits:2,maximumFractionDigits:2});function ve(n,e){let i=e.employee,a=[],t=[];if(e.month<1||e.month>12)throw new Error("Mese non valido");let r=BigInt(i.partTimeBp),m=o=>g(o*r,10000n),d=[["100","Paga base",m(i.baseCents)],["110","Contingenza",m(i.contingencyCents)],["120","Altri elementi del contratto",m(i.otherContractCents)],["130","Superminimo",m(i.superminimoCents)],["140","Scatti di anzianit\xE0",m(i.seniorityCents)]],l=d.reduce((o,c)=>o+c[2],0n);if(l<=0n)throw new Error("La retribuzione mensile del dipendente \xE8 zero: completa livello e contratto.");let b=g(l*100n,BigInt(e.contract.hourlyDivisorC)),u=e.kind==="ordinario"?ce(e.year,e.month,i.hiredOn,i.endedOn):0;if(e.kind==="ordinario"&&u===0)throw new Error("Nel mese indicato il rapporto di lavoro non \xE8 in corso.");let T=[],y=(o,c,p,C={},F,H)=>{p!==0n&&(t.push({code:o,label:c,cents:p,side:"competenza",qty:F,rate:H}),T.push({cents:p,inps:C.inps??!0,irpef:C.irpef??!0,tfr:C.tfr??!0}))};if(e.kind==="ordinario"){let o=e.paidDays==null||e.paidDays>=e.contract.dailyDivisor;if(!o&&(e.paidDays<0||!Number.isInteger(e.paidDays)))throw new Error("Giorni retribuiti non validi.");for(let[c,p,C]of d)y(c,p,o?C:g(C*BigInt(e.paidDays),BigInt(e.contract.dailyDivisor)),{},o?void 0:`${e.paidDays}/${e.contract.dailyDivisor} gg`);for(let c of e.overtime??[])c.hoursC<=0||y("200",c.label,g(b*BigInt(c.hoursC)*BigInt(1e4+c.surchargeBp),1000000n),{tfr:!1},`${se(c.hoursC)} h`,`${E(b)} +${W(c.surchargeBp)}`);e.unpaidHoursC&&e.unpaidHoursC>0&&y("300","Assenze non retribuite",-g(b*BigInt(e.unpaidHoursC),100n),{},`${se(e.unpaidHoursC)} h`,E(b))}else{let o=e.accruedMonths??12;if(!Number.isInteger(o)||o<0||o>12)throw new Error("I mesi maturati devono essere tra 0 e 12.");if(e.kind==="quattordicesima"&&e.contract.monthlyPayments<14)throw new Error("Il contratto del dipendente non prevede la quattordicesima.");if(e.kind==="tredicesima"&&e.contract.monthlyPayments<13)throw new Error("Il contratto del dipendente non prevede la tredicesima.");y(e.kind==="tredicesima"?"400":"410",e.kind==="tredicesima"?"Tredicesima mensilit\xE0":"Quattordicesima mensilit\xE0",g(l*BigInt(o),12n),{},`${o}/12`)}let h=0n;for(let o of e.extras??[])if(o.inpsAdvance){if(o.cents<=0n)throw new Error("L'indennit\xE0 anticipata per conto dell'INPS deve essere un importo positivo.");y("510",o.label,o.cents,{inps:!1,irpef:!0,tfr:!1}),h+=o.cents}else y("500",o.label,o.cents,{inps:o.inps??!0,irpef:o.irpef??!0,tfr:o.tfr??!1});h>0n&&a.push("Le indennit\xE0 anticipate per conto dell'INPS sono inserite dallo studio: QONTARIS non calcola percentuali, carenza n\xE9 integrazioni contrattuali.");let D=o=>T.filter(o).reduce((c,p)=>c+p.cents,0n),I=D(()=>!0);if(I<0n)throw new Error("Il totale delle competenze \xE8 negativo: controlla assenze e voci inserite.");let f=_(D(o=>o.inps));if(n.inps.arrotonda_euro&&(f=g(f,100n)*100n),i.contributionCap){let o=_(s(n.inps.massimale_cents)-e.ytd.inpsBaseCents);f>o&&(f=o,a.push("Imponibile contributivo limitato dal massimale annuo."))}let A=v(f,e.employer.inpsEmployeeBp),Y=_(f-s(n.inps.prima_fascia_mensile_cents)),U=e.kind==="ordinario"?v(Y,n.inps.aggiuntiva_bp):0n;f>0n&&t.push({code:"600",label:"Contributi previdenziali a carico del lavoratore",cents:A,side:"trattenuta",qty:E(f),rate:W(e.employer.inpsEmployeeBp)}),U>0n&&(t.push({code:"605",label:"Contributo aggiuntivo oltre la prima fascia",cents:U,side:"trattenuta",qty:E(Y),rate:W(n.inps.aggiuntiva_bp)}),A+=U,a.push("Contributo aggiuntivo calcolato sul mese: il conguaglio annuo sulla prima fascia di retribuzione pensionabile non \xE8 gestito."));let x=_(D(o=>o.irpef)-A),N=O(x,n.irpef.scaglioni,12),ue=BigInt(Z(e.year)),S=(o,c)=>g(o*BigInt(c),ue),R=0n,$=0n,P=0n,w=0n,B=0n;if(e.kind==="ordinario"){let o=i.expectedIncomeCents??x*BigInt(e.contract.monthlyPayments),c=G(n,o,i.otherIncomeCents,i.fixedTerm);i.expectedIncomeCents==null&&a.push(`Detrazioni calcolate su un reddito annuo presunto di ${E(c.rcCents)} (imponibile del mese \xD7 ${e.contract.monthlyPayments} mensilit\xE0${i.otherIncomeCents>0n?" + altri redditi comunicati":""}).`),i.applyDeductions&&(R=S(c.workDeductionCents,u),P=i.familyDeductionCents),i.applyWedge&&($=S(c.wedgeDeductionCents,u),w=v(x,c.wedgeSumBp)),i.applySupplement&&(B=S(c.supplementCents,u),a.push(...c.notes))}else a.push("Mensilit\xE0 aggiuntiva: imposta per scaglioni mensili, senza detrazioni (si recuperano con il conguaglio).");let z=_(N-R-$-P);N>0n&&t.push({code:"700",label:"IRPEF lorda",cents:N,side:"figurativa",qty:E(x)}),R>0n&&t.push({code:"710",label:"Detrazione per lavoro dipendente",cents:R,side:"figurativa",qty:`${u} gg`}),$>0n&&t.push({code:"715",label:"Ulteriore detrazione",cents:$,side:"figurativa",qty:`${u} gg`}),P>0n&&t.push({code:"720",label:"Detrazioni per carichi di famiglia (indicate dallo studio)",cents:P,side:"figurativa"}),z>0n&&t.push({code:"730",label:"Ritenuta IRPEF",cents:z,side:"trattenuta"});let k=0n,j;if(e.settle){let o=e.ytd.irpefBaseCents+x,c=Math.min(e.ytd.days+u,Z(e.year)),p=G(n,o,i.otherIncomeCents,i.fixedTerm),C=i.applyDeductions?S(p.workDeductionCents,c):0n;i.applyDeductions&&C<p.minimumCents&&(C=p.minimumCents);let F=i.applyWedge?S(p.wedgeDeductionCents,c):0n,H=i.applyDeductions?e.ytd.familyDeductionCents+P:0n,ne=_(p.grossCents-C-F-H),te=e.ytd.irpefWithheldCents+z;k=ne-te;let ie=i.applyWedge?v(o,p.wedgeSumBp):0n,oe=i.applySupplement?S(p.supplementCents,c):0n,pe=ie-(e.ytd.wedgeSumCents+w),me=oe-(e.ytd.supplementCents+B);j={baseCents:o,days:c,grossCents:p.grossCents,workDeductionCents:C,wedgeDeductionCents:F,familyDeductionCents:H,dueCents:ne,withheldCents:te,wedgeSumDueCents:ie,supplementDueCents:oe},k!==0n&&t.push({code:"740",label:k>0n?"Conguaglio IRPEF a debito":"Conguaglio IRPEF a credito",cents:k,side:"trattenuta"}),w+=pe,B+=me,z+=k,a.push(...p.notes.filter(de=>!a.includes(de))),a.push("Conguaglio di fine anno o di fine rapporto calcolato sui cedolini dell'anno presenti in QONTARIS e sugli altri redditi comunicati.")}w!==0n&&t.push({code:"750",label:"Somma che non concorre al reddito",cents:w,side:"competenza"}),B!==0n&&t.push({code:"760",label:"Trattamento integrativo",cents:B,side:"competenza"});let M=e.kind==="ordinario"?i.regionalInstalmentCents:0n,L=e.kind==="ordinario"?i.municipalInstalmentCents:0n;M>0n&&t.push({code:"770",label:"Addizionale regionale (rata)",cents:M,side:"trattenuta"}),L>0n&&t.push({code:"780",label:"Addizionale comunale (rata)",cents:L,side:"trattenuta"});let Q=0n;for(let o of e.deductions??[])o.cents<=0n||(t.push({code:"800",label:o.label,cents:o.cents,side:"trattenuta"}),Q+=o.cents);let K=I-A-z-M-L-Q+w+B;K<0n&&a.push("Il netto \xE8 negativo: le trattenute superano le competenze. Va deciso come recuperare la differenza.");let X=v(f,e.employer.inpsEmployerBp),J=v(f,e.employer.inailBp),ee=_(g(_(D(o=>o.tfr))*10n,BigInt(n.tfr.divisore_x10))-v(f,n.tfr.contributo_bp)),q=e.kind==="ordinario";return{lines:t,notes:a,days:u,grossCents:I,inpsBaseCents:f,inpsEmployeeCents:A,irpefBaseCents:x,irpefGrossCents:N,workDeductionCents:R,wedgeDeductionCents:$,familyDeductionCents:P,irpefNetCents:z,settlementCents:k,wedgeSumCents:w,supplementCents:B,surtaxRegionalCents:M,surtaxMunicipalCents:L,otherWithheldCents:Q,netCents:K,inpsAdvancesCents:h,inpsEmployerCents:X,inailCents:J,tfrCents:ee,employerCostCents:I-h+X+J+ee,leaveAccruedC:q?Math.round(e.contract.leaveHoursC*i.partTimeBp/1e4/12):0,leaveTakenC:q?e.leaveTakenC??0:0,permitAccruedC:q?Math.round(e.contract.permitHoursC*i.partTimeBp/1e4/12):0,permitTakenC:q?e.permitTakenC??0:0,annual:j}}function De(n,e,i){let a=BigInt(n.tfr.rivalutazione_fissa_bp)*10000n+BigInt(n.tfr.quota_istat_bp)*BigInt(i),t=g(_(e)*a,100000000n);return{rateBp:Number(a)/1e4,revaluationCents:t,taxCents:v(t,n.tfr.imposta_sostitutiva_bp)}}function le(n){let e=n.toUpperCase();if(!/^[A-Z]{6}[0-9LMNPQRSTUV]{2}[A-EHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$/.test(e))return!1;let i={0:1,1:0,2:5,3:7,4:9,5:13,6:15,7:17,8:19,9:21,A:1,B:0,C:5,D:7,E:9,F:13,G:15,H:17,I:19,J:21,K:2,L:4,M:18,N:20,O:11,P:3,Q:6,R:8,S:12,T:14,U:16,V:10,W:22,X:25,Y:24,Z:23},a=0;for(let t=0;t<15;t++){let r=e[t];a+=t%2===0?i[r]:/\d/.test(r)?Number(r):r.charCodeAt(0)-65}return String.fromCharCode(65+a%26)===e[15]}function we(n){let e=m=>{let d=n.match(m);if(!d)return null;let l=d[1].replace(/\s/g,""),b=/,\d{2}$/.test(l)?l.replace(/\./g,"").replace(",","."):l.replace(/,/g,""),u=Number(b);return Number.isFinite(u)?BigInt(Math.round(u*100)):null},i="([0-9][0-9.\\s]*,[0-9]{2})",a=n.toUpperCase().match(/\b[A-Z]{6}[0-9LMNPQRSTUV]{2}[A-EHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]\b/g)?.find(le)??null,t=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"],r=n.toLowerCase().match(new RegExp(`(${t.join("|")})\\s+(20\\d{2})`));return{taxCode:a,year:r?Number(r[2]):null,month:r?t.indexOf(r[1])+1:null,netCents:e(new RegExp(`netto\\s+(?:in\\s+busta|a\\s+pagare|del\\s+mese|in\\s+pagamento)[^0-9]{0,40}${i}`,"i")),grossCents:e(new RegExp(`totale\\s+(?:competenze|lordo)[^0-9]{0,40}${i}`,"i")),withheldCents:e(new RegExp(`totale\\s+trattenute[^0-9]{0,40}${i}`,"i"))}}return ye(Be);})();
+</script>
 <script>
-  const tabs = [...document.querySelectorAll("[data-tab]")];
-  function show(name) {
-    if (!tabs.some((t) => t.dataset.tab === name)) name = "studio";
-    tabs.forEach((t) => t.setAttribute("aria-selected", t.dataset.tab === name));
-    document.querySelectorAll("main section").forEach((s) => (s.hidden = s.id !== name));
-  }
-  tabs.forEach((t) => t.addEventListener("click", () => { show(t.dataset.tab); try { history.replaceState(null, "", "#" + t.dataset.tab); } catch (e) {} }));
-  addEventListener("hashchange", () => show(location.hash.slice(1)));
-  show(location.hash.slice(1));
-  // Un collegamento a una scheda apre la pagina dall'inizio, non a metà.
-  addEventListener("load", () => scrollTo(0, 0));
-  const dlg = document.getElementById("zoom");
-  document.querySelectorAll("[data-src]").forEach((b) => b.addEventListener("click", () => {
-    const img = dlg.querySelector("img");
-    img.src = b.dataset.src; img.alt = b.querySelector("img").alt;
-    dlg.showModal();
-  }));
-  dlg.querySelector("button").addEventListener("click", () => dlg.close());
-  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+const DATA = {"groups": [{"t": "Dal documento al dato", "s": "Ogni informazione entra una volta sola e resta collegata alla sua fonte."}, {"t": "Paghe e personale", "s": "Dal lordo al netto, con i parametri di legge dichiarati e confermati dallo studio."}, {"t": "Clienti e studio", "s": "Ognuno vede il proprio spazio: cliente, lavoratore, dipendente dello studio."}, {"t": "Automazione e aree professionali", "s": "Agenti e regole preparano il lavoro; revisione e procedure hanno i loro strumenti."}], "steps": [{"n": 1, "g": 0, "img": "oggi", "t": "Il quadro di sintesi", "s": "La giornata dello studio in una schermata.", "b": ["Apri QONTARIS e vedi subito cosa richiede attenzione: documenti da verificare, scadenze, attività, cedolini in bozza.", "Ogni riquadro è un conteggio fatto in quel momento sui dati dello studio: toccandolo si apre l'elenco che lo giustifica.", "Chi ha solo alcuni clienti assegnati vede i numeri di quelli, non dell'intero studio."], "phone": false, "hot": [{"l": "Ogni numero è un conteggio sui dati reali e apre l'elenco che lo spiega", "x": 20.29, "y": 24.35, "w": 77.94, "h": 45.5}, {"l": "Da qui entra ogni documento", "x": 3.53, "y": 39.53, "w": 5.21, "h": 2.6}], "r": 1.6}, {"n": 2, "g": 0, "img": "acquisisci", "t": "Acquisire un documento", "s": "File, foto dal telefono, fatture elettroniche.", "b": ["Trascini i file, scatti una foto o carichi una fattura elettronica XML: anche molti insieme.", "QONTARIS riconosce il formato dal contenuto, legge il testo (anche con OCR in italiano) e segnala i duplicati.", "Nulla viene registrato in automatico: ogni documento entra come «da verificare»."], "phone": false, "hot": [{"l": "Foto dal telefono o file trascinati: l'originale resta sempre conservato", "x": 20.29, "y": 41.4, "w": 38.38, "h": 34.16}], "r": 1.6}, {"n": 3, "g": 0, "img": "documento", "t": "Verificare e approvare", "s": "La proposta è del programma, la decisione è tua.", "b": ["Per ogni documento trovi il cliente e la categoria proposti, con i motivi della proposta.", "I dati estratti riportano il punto del file da cui sono stati letti: si controllano a colpo d'occhio.", "Con «Approva» confermi tu: resta scritto chi ha approvato, quando e cosa."], "phone": false, "hot": [{"l": "Cliente e categoria proposti, con i motivi", "x": 20.29, "y": 24.9, "w": 40.21, "h": 55.65}, {"l": "La conferma resta a una persona", "x": 62.93, "y": 75.17, "w": 6.54, "h": 4.66}], "r": 1.6}, {"n": 4, "g": 0, "img": "iva", "t": "Contabilità e IVA", "s": "Prima nota, elenchi IVA, cespiti, ratei e risconti.", "b": ["Dalle fatture approvate ottieni gli elenchi di vendite e acquisti del periodo, con i totali per aliquota.", "Le scritture nascono in bozza; quelle registrate non si modificano: si annullano e si rifanno.", "QONTARIS non presume regole fiscali: codifiche, aliquote e conti li sceglie lo studio, indicando la fonte."], "phone": false, "hot": [{"l": "La differenza non è l'IVA da versare: lo dice la pagina", "x": 73.04, "y": 39.22, "w": 25.2, "h": 12.9}, {"l": "Esportazione per il controllo", "x": 71.6, "y": 32.21, "w": 9.13, "h": 4.66}], "r": 1.6}, {"n": 5, "g": 1, "img": "paghe", "t": "I cedolini del mese", "s": "Tutte le aziende seguite, in un elenco.", "b": ["Scegli azienda e mese: vedi bozze, cedolini confermati e costo per l'azienda.", "Calcoli un cedolino in pochi campi: presenze, straordinari, assenze, voci del mese, indennità per conto dell'INPS.", "I cedolini fatti da un consulente esterno si importano: il programma propone le cifre lette, tu le verifichi."], "phone": false, "hot": [{"l": "Bozze da confermare nel mese", "x": 40.07, "y": 21.82, "w": 18.6, "h": 12.9}, {"l": "Calcolo dal lordo al netto", "x": 20.29, "y": 54.24, "w": 11.65, "h": 3.76}], "r": 1.6}, {"n": 6, "g": 1, "img": "cedolino", "t": "Il cedolino, voce per voce", "s": "Dal lordo al netto e al costo per l'azienda.", "b": ["Ogni voce mostra quantità, base e aliquota: contributi, IRPEF a scaglioni, detrazioni, cuneo fiscale, addizionali.", "Sotto trovi come è stata calcolata l'imposta e quali parametri di legge sono stati usati.", "Dopo la conferma il cedolino non si modifica più; si scarica in PDF e si consegna al lavoratore."], "phone": false, "hot": [{"l": "Netto del mese", "x": 40.07, "y": 17.19, "w": 18.6, "h": 11.63}, {"l": "Ogni voce con quantità, base e aliquota", "x": 20.29, "y": 30.64, "w": 77.94, "h": 44.75}, {"l": "Il cedolino in PDF", "x": 89.83, "y": 7.77, "w": 8.41, "h": 3.6}], "r": 1.2364}, {"n": 7, "g": 1, "img": "versamenti", "t": "Versamenti e dati per la CU", "s": "Cosa deve versare l'azienda, mese per mese.", "b": ["Dai cedolini confermati ottieni il prospetto di ritenute e contributi del mese, a debito e a credito.", "A fine anno il conguaglio ricalcola l'imposta sul reddito effettivo; i dati per la CU si esportano in XLSX.", "Sono prospetti di lavoro: QONTARIS non trasmette deleghe né certificazioni."], "phone": false, "hot": [{"l": "Ritenute e contributi del mese, a debito e a credito", "x": 20.29, "y": 54.24, "w": 77.94, "h": 45.76}], "r": 1.6}, {"n": 8, "g": 1, "img": "parametri", "t": "Parametri di legge con la fonte", "s": "Niente numeri nascosti nel programma.", "b": ["Scaglioni, detrazioni, fasce contributive e TFR sono tabelle visibili, con validità e norma di riferimento.", "I valori 2026 sono precaricati ma restano «da confermare» finché un professionista dello studio non li verifica.", "Con parametri non confermati i cedolini restano bozze: la responsabilità del dato resta a una persona."], "phone": false, "hot": [{"l": "Ogni valore di legge riporta la norma e chi l'ha confermato", "x": 21.54, "y": 76.11, "w": 75.44, "h": 2.43}], "r": 1.6}, {"n": 9, "g": 1, "img": "lavoratore", "t": "L'area del lavoratore", "s": "Ogni dipendente vede solo ciò che è suo.", "b": ["Il lavoratore accede con il proprio profilo, anche dal telefono.", "Trova i cedolini che lo studio gli ha consegnato, le ferie e i permessi residui, il TFR maturato.", "Non vede nient'altro: né i colleghi, né l'archivio dello studio."], "phone": true, "hot": [{"l": "Solo i propri cedolini, consegnati dallo studio", "x": 3.5, "y": 64.97, "w": 93, "h": 34.37}], "r": 0.4878}, {"n": 10, "g": 2, "img": "portale", "t": "Il portale del cliente", "s": "Lo studio e il cliente lavorano sugli stessi dati.", "b": ["Il cliente vede le richieste dello studio, invia documenti e foto, segue ciò che è in lavorazione.", "Trova vendite e acquisti già verificati e le scadenze che lo studio decide di condividere.", "Un assistente gli spiega i passaggi e prepara richieste: le azioni che contano le conferma lo studio."], "phone": false, "hot": [{"l": "Richieste dello studio e documenti in lavorazione", "x": 20.29, "y": 46.09, "w": 40.21, "h": 21.82}], "r": 1.6}, {"n": 11, "g": 2, "img": "team", "t": "Team e permessi", "s": "Chi vede cosa lo decide l'amministratore.", "b": ["Inviti i collaboratori e scegli il ruolo: titolare, professionista, dipendente, revisore, sola lettura.", "Per ogni persona puoi concedere o togliere singoli permessi e limitarla ai clienti assegnati.", "Accesso in due passaggi, registro di ogni operazione, sessioni chiuse al cambio della password."], "phone": false, "hot": [{"l": "Chi vede cosa lo decide l'amministratore", "x": 20.29, "y": 31.83, "w": 77.94, "h": 12.13}], "r": 1.6}, {"n": 12, "g": 3, "img": "agenti", "t": "Gli agenti", "s": "Colleghi digitali con un ruolo e dei limiti.", "b": ["Scegli un ruolo dal catalogo: documenti, scadenze, paghe, solleciti, riconciliazione e altri.", "Decidi tu il livello di autonomia: solo suggerire, preparare bozze, o eseguire le azioni reversibili.", "Nessun agente può approvare, registrare, inviare o cancellare al posto di una persona."], "phone": false, "hot": [{"l": "Pacchetto attivo e operazioni del mese", "x": 20.29, "y": 29.07, "w": 77.94, "h": 25.19}], "r": 1.6}, {"n": 13, "g": 3, "img": "automazioni", "t": "Le automazioni", "s": "Regole «quando… se… allora».", "b": ["Ventidue modelli pronti: promemoria, bozze dei cedolini del mese, solleciti, riepiloghi delle eccezioni.", "Ogni regola nasce in bozza, si prova in simulazione e solo dopo si attiva.", "Le regole girano anche a pagina chiusa e ogni esecuzione resta nello storico."], "phone": false, "hot": [{"l": "Le regole dello studio: nascono da un modello, in bozza", "x": 20.29, "y": 36.44, "w": 77.94, "h": 19.19}], "r": 1.6}, {"n": 14, "g": 3, "img": "revisione", "t": "Revisione legale", "s": "Carte di lavoro, evidenze, circolarizzazioni.", "b": ["Per ogni incarico: pianificazione, materialità inserita dal revisore, carte di lavoro per area.", "Chi prepara una carta non può approvarla: il riesame è di una persona diversa.", "Ogni modifica a una carta approvata revoca l'approvazione e lascia traccia."], "phone": false, "hot": [{"l": "Carte di lavoro con riesame da una persona diversa", "x": 20.29, "y": 22.25, "w": 40.21, "h": 45.61}], "r": 1.6}, {"n": 15, "g": 3, "img": "procedura", "t": "Crisi e procedure", "s": "Domande di credito, attivo, riparto.", "b": ["Per ogni procedura: creditori e domande, inventario e realizzi, registro delle operazioni.", "La classificazione dei crediti e l'ordine delle classi li indica il professionista.", "Il prospetto di riparto è calcolato al centesimo, senza perdere né creare importi."], "phone": false, "hot": [{"l": "Domande di credito, attivo e registro delle operazioni", "x": 20.29, "y": 47.52, "w": 77.94, "h": 52.48}], "r": 1.6}]}, PARAMS = {"irpef":{"scaglioni":[{"fino_cents":2800000,"aliquota_bp":2300},{"fino_cents":5000000,"aliquota_bp":3300},{"fino_cents":null,"aliquota_bp":4300}]},"detrazioni":{"fascia1_fino_cents":1500000,"fascia1_importo_cents":195500,"minimo_cents":69000,"minimo_td_cents":138000,"fascia2_fino_cents":2800000,"fascia2_base_cents":191000,"fascia2_variabile_cents":119000,"fascia3_fino_cents":5000000,"fascia3_base_cents":191000,"maggiorazione_da_cents":2500000,"maggiorazione_a_cents":3500000,"maggiorazione_cents":6500},"cuneo":{"somma":[{"fino_cents":850000,"bp":710},{"fino_cents":1500000,"bp":530},{"fino_cents":2000000,"bp":480}],"ulteriore_importo_cents":100000,"ulteriore_da_cents":2000000,"ulteriore_piena_fino_cents":3200000,"ulteriore_fino_cents":4000000},"integrativo":{"limite_cents":1500000,"importo_cents":120000,"franchigia_cents":7500,"fascia_non_calcolata_fino_cents":2800000},"inps":{"prima_fascia_mensile_cents":468500,"massimale_cents":12229500,"aggiuntiva_bp":100,"arrotonda_euro":true},"tfr":{"divisore_x10":135,"contributo_bp":50,"rivalutazione_fissa_bp":150,"quota_istat_bp":7500,"imposta_sostitutiva_bp":1700}};
+const $ = (id) => document.getElementById(id);
+
+// ── Percorso guidato ──
+let cur = 0, on = -1;
+const stepsEl = $("steps"), pick = $("pick");
+DATA.groups.forEach((g, gi) => {
+  const h = document.createElement("h3"); h.textContent = g.t; stepsEl.append(h);
+  const og = document.createElement("optgroup"); og.label = g.t; pick.append(og);
+  DATA.steps.filter((s) => s.g === gi).forEach((s) => {
+    const b = document.createElement("button"); b.type = "button"; b.dataset.i = s.n - 1;
+    b.innerHTML = "<i>" + String(s.n).padStart(2, "0") + "</i><span></span>"; b.lastChild.textContent = s.t;
+    b.onclick = () => show(s.n - 1, true); stepsEl.append(b);
+    const o = document.createElement("option"); o.value = s.n - 1; o.textContent = s.n + ". " + s.t; og.append(o);
+  });
+});
+pick.onchange = () => show(Number(pick.value), true);
+function highlight(k) {
+  on = on === k ? -1 : k;
+  $("shot").classList.toggle("all", on < 0);
+  $("shot").querySelectorAll(".hot").forEach((h, i) => h.classList.toggle("on", i === on));
+  $("acts").querySelectorAll("button").forEach((b, i) => b.setAttribute("aria-pressed", i === on));
+}
+function show(i, user) {
+  cur = (i + DATA.steps.length) % DATA.steps.length; on = -1;
+  const s = DATA.steps[cur], shot = $("shot");
+  $("snum").textContent = "Passaggio " + s.n + " di " + DATA.steps.length + " · " + DATA.groups[s.g].t;
+  $("stitle").textContent = s.t; $("ssub").textContent = s.s;
+  shot.className = "shot all" + (s.phone ? " phone" : "");
+  shot.querySelectorAll(".hot").forEach((h) => h.remove());
+  const img = $("simg"); img.src = "img/" + s.img + ".jpg"; img.alt = "Schermata: " + s.t; img.style.aspectRatio = s.r;
+  const acts = $("acts"); acts.textContent = "";
+  s.hot.forEach((h, k) => {
+    const d = document.createElement("div"); d.className = "hot"; d.dataset.n = k + 1;
+    d.style.cssText = `left:${h.x}%;top:${h.y}%;width:${h.w}%;height:${h.h}%`; shot.append(d);
+    const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-pressed", "false");
+    b.innerHTML = "<b>" + (k + 1) + "</b><span></span>"; b.lastChild.textContent = h.l; b.onclick = () => highlight(k); acts.append(b);
+  });
+  if (s.hot.length) { const t = document.createElement("span"); t.className = "hint"; t.textContent = "Tocca un'azione per metterla in evidenza"; acts.append(t); }
+  const ex = $("expl"); ex.textContent = "";
+  s.b.forEach((t) => { const li = document.createElement("li"); li.textContent = t; ex.append(li); });
+  stepsEl.querySelectorAll("button").forEach((b) => b.setAttribute("aria-current", Number(b.dataset.i) === cur));
+  pick.value = cur; $("bar").style.width = ((cur + 1) / DATA.steps.length * 100) + "%";
+  if (user) try { history.replaceState(null, "", "#passo-" + s.n); } catch (e) {}
+}
+$("prev").onclick = () => show(cur - 1, true); $("next").onclick = () => show(cur + 1, true);
+addEventListener("keydown", (e) => {
+  if (/INPUT|SELECT|TEXTAREA/.test(e.target.tagName) || e.target.tagName === "VIDEO") return;
+  const r = $("percorso").getBoundingClientRect();
+  if (r.top > innerHeight * .6 || r.bottom < innerHeight * .3) return;
+  if (e.key === "ArrowRight") show(cur + 1, true); else if (e.key === "ArrowLeft") show(cur - 1, true);
+});
+const m = location.hash.match(/^#passo-(\d+)$/);
+show(m ? Math.min(Math.max(Number(m[1]), 1), DATA.steps.length) - 1 : 0);
+if (m) addEventListener("load", () => $("percorso").scrollIntoView());
+
+// ── Calcolo dimostrativo: lo stesso motore della piattaforma ──
+const MONTHS = ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
+MONTHS.forEach((n, i) => $("c-month").add(new Option(n + " 2026", i + 1)));
+const num = (id) => Number(String($(id).value).trim().replace(/\./g, "").replace(",", ".")) || 0;
+const eur = (c) => { const n = Number(c) / 100; return n.toLocaleString("it-IT", { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: "always" }) + " €"; };
+function calc() {
+  const table = $("c-table");
+  try {
+    const gross = Math.round(num("c-gross") * 100), pt = Math.round(num("c-pt") * 100);
+    if (!(gross > 0) || gross > 5000000) throw new Error("Indica una retribuzione lorda mensile tra 1 e 50.000 euro.");
+    if (!(pt >= 1 && pt <= 10000)) throw new Error("Il part-time va da 0,01 a 100.");
+    const bp = (id, max) => { const v = Math.round(num(id) * 100); if (v < 0 || v > max) throw new Error("Una percentuale non è valida."); return v; };
+    const ot = Math.round(num("c-ot") * 100);
+    if (ot < 0 || ot > 20000) throw new Error("Le ore di straordinario vanno da 0 a 200.");
+    const r = QEngine.computePayslip(PARAMS, {
+      year: 2026, month: Number($("c-month").value), kind: "ordinario",
+      ytd: { inpsBaseCents: 0n, irpefBaseCents: 0n, irpefWithheldCents: 0n, wedgeSumCents: 0n, supplementCents: 0n, familyDeductionCents: 0n, days: 0 },
+      employee: { hiredOn: "2020-01-01", fixedTerm: $("c-td").checked, partTimeBp: pt, baseCents: BigInt(gross), contingencyCents: 0n, otherContractCents: 0n, superminimoCents: 0n, seniorityCents: 0n,
+        applyDeductions: true, applyWedge: true, applySupplement: true, contributionCap: false, otherIncomeCents: 0n, familyDeductionCents: 0n, regionalInstalmentCents: 0n, municipalInstalmentCents: 0n },
+      contract: { monthlyPayments: Number($("c-mens").value), hourlyDivisorC: 17300, dailyDivisor: 26, leaveHoursC: 0, permitHoursC: 0 },
+      employer: { inpsEmployeeBp: bp("c-ee", 2000), inpsEmployerBp: bp("c-er", 6000), inailBp: bp("c-inail", 2000) },
+      overtime: ot ? [{ label: "Straordinario", hoursC: ot, surchargeBp: 2500 }] : [],
+    });
+    $("c-net").textContent = eur(r.netCents);
+    const rows = [["Totale competenze", r.grossCents], ["Contributi a carico del lavoratore", -r.inpsEmployeeCents], ["IRPEF lorda", r.irpefGrossCents, 1],
+      ["Detrazione per lavoro dipendente", -r.workDeductionCents, 1], ["Ulteriore detrazione (cuneo fiscale)", -r.wedgeDeductionCents, 1], ["Ritenuta IRPEF", -r.irpefNetCents],
+      ["Somma che non concorre al reddito", r.wedgeSumCents], ["Trattamento integrativo", r.supplementCents]];
+    table.textContent = "";
+    for (const [l, v, info] of rows) { if (v === 0n) continue; const tr = table.insertRow(); tr.insertCell().textContent = info ? "· " + l : l; tr.insertCell().textContent = eur(v); if (info) tr.style.color = "var(--ink2)"; }
+    let tr = table.insertRow(); tr.className = "tot"; tr.insertCell().textContent = "Netto del mese"; tr.insertCell().textContent = eur(r.netCents);
+    for (const [l, v] of [["Contributi a carico dell'azienda", r.inpsEmployerCents], ["INAIL", r.inailCents], ["TFR maturato nel mese", r.tfrCents], ["Costo per l'azienda", r.employerCostCents]]) { tr = table.insertRow(); tr.insertCell().textContent = l; tr.insertCell().textContent = eur(v); if (l.startsWith("Costo")) tr.className = "tot"; }
+  } catch (e) { $("c-net").textContent = "—"; table.textContent = ""; table.insertRow().insertCell().textContent = e.message; }
+}
+$("cform").addEventListener("input", calc); calc();
 </script>
 </body>
 </html>
